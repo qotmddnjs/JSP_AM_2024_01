@@ -39,12 +39,14 @@ public class ArticleDetailServlet extends HttpServlet {
 
 			DBUtil dbUtil = new DBUtil(request, response);
 
-			String sql = "SELECT * FROM article;";
+			int id = Integer.parseInt(request.getParameter("id"));
 
-			List<Map<String, Object>> articleRows = dbUtil.selectRows(conn, sql);
+//			String sql = "SELECT * FROM article WHERE id = " + id + ";";
+			String sql = String.format("SELECT * FROM article WHERE id = %d;", id);
 
-//			response.getWriter().append(articleRows.toString());
-			request.setAttribute("articleRows", articleRows);
+			Map<String, Object> articleRow = dbUtil.selectRow(conn, sql);
+
+			request.setAttribute("articleRow", articleRow);
 			request.getRequestDispatcher("/jsp/article/detail.jsp").forward(request, response);
 
 		} catch (SQLException e) {
