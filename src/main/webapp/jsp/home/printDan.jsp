@@ -1,13 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<%
+int dan = Integer.parseInt(request.getParameter("dan"));
+int limit = Integer.parseInt(request.getParameter("limit"));
+String color = request.getParameter("color");
+%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>援ш뎄�떒 異쒕젰</title>
 </head>
 <body>
-  <h1>==8단==</h1>
-  <div>test</div>
+
+	<h3>
+		==<%=dan%>�떒==
+	</h3>
+	<%
+	for (int i = 1; i <= limit; i++) {
+	%>
+	<div style="color:<%=color%>;">
+		<%=dan%>
+		*
+		<%=i%>
+		=
+		<%=dan * i%></div>
+	<%
+	}
+	%>
 </body>
 </html>
