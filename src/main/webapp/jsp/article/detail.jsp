@@ -30,6 +30,7 @@ Map<String, Object> articleRow = (Map<String, Object>) request.getAttribute("art
 
 	<div><a style="color:green" href="list">리스트로 돌아가기</a></div>
 	<a href="../article/delete">게시물 삭제</a>
-
+	<a href="../article/modify">게시물 수정</a>
+     
 </body>
 </html>
