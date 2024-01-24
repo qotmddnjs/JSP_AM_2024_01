@@ -19,6 +19,8 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/article/list")
 public class ArticleListServlet extends HttpServlet {
 
+	private int pageLength;
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
@@ -47,6 +49,12 @@ public class ArticleListServlet extends HttpServlet {
 
 			int itemsInAPage = 10;
 			int limitFrom = (page - 1) * itemsInAPage;
+			
+		
+
+
+		
+		
 
 			SecSql sql = SecSql.from("SELECT COUNT(*) AS cnt");
 			sql.append("FROM article");
@@ -63,7 +71,9 @@ public class ArticleListServlet extends HttpServlet {
 
 			request.setAttribute("page", page);
 			request.setAttribute("totalPage", totalPage);
+			request.setAttribute("countPerPage", totalPage);
 			request.setAttribute("articleRows", articleRows);
+			
 			request.getRequestDispatcher("/jsp/article/list.jsp").forward(request, response);
 
 		} catch (SQLException e) {
