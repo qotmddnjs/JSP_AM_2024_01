@@ -34,10 +34,16 @@
 			console.log('form.loginId.value : ' + loginId);
 			console.log('form.loginPw.value : ' + loginPw);
 			console.log('form.loginPwConfirm.value : ' + loginPwConfirm);
+			console.log('form.loginIDConfirm.value : ' + loginIdConfirm);
 			console.log('form.name.value : ' + name);
 
 			if (loginId.length == 0) {
 				alert('아이디를 입력해주세요');
+				form.loginId.focus();
+				return;
+			}
+			if (loginId != loginIdConfirm) {
+				alert('이미 사용중인 아이디');
 				form.loginId.focus();
 				return;
 			}
